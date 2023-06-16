@@ -8,7 +8,10 @@ const App: Component = () => {
     <div>
       <Topbar></Topbar>
       <Show when={!isOnServerList()}>
-        <h1 class="text-4xl mx-4 mt-2 text-lightorange">jpxs</h1>
+        <div class="text-4xl ml-4 mt-4">
+          <h1 class="text-lightorange inline">jpxs</h1>
+          <h2 class="inline">.international</h2>
+        </div>
       </Show>
       <Show when={isOnServerList()}>
         <ServerList></ServerList>

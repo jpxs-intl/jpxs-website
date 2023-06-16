@@ -8,7 +8,7 @@ module.exports = {
       orange: "#7C3612",
       bg: "#171717",
       white: "#FFFFFF",
-      lightorange: "#D97709",
+      lightorange: "#FF7709",
     },
   },
   plugins: [],
