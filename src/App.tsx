@@ -1,5 +1,5 @@
 import { Show, type Component, createSignal } from "solid-js";
-import Topbar from "./components/Topbar";
+import { Topbar, setMenuText } from "./components/Topbar";
 import ServerList from "./components/ServerList";
 import PlayerSearch from "./components/PlayerSearch";
 const [isOnServerList, setServerListVisiblity] = createSignal(false);
@@ -26,8 +26,10 @@ const App: Component = () => {
           onClick={() => {
             setServerListVisiblity(!isOnServerList());
             if (isOnServerList()) {
+              setMenuText("Server List");
               setServerButtonText("Go Back");
             } else {
+              setMenuText("Home");
               setServerButtonText("Server List");
             }
           }}
@@ -44,8 +46,10 @@ const App: Component = () => {
           onClick={() => {
             setPlayerSearchVisibility(!isOnPlayerSearch());
             if (isOnPlayerSearch()) {
+              setMenuText("Player Search");
               setPlayerListButtonText("Go Back");
             } else {
+              setMenuText("Home");
               setPlayerListButtonText("Player Search");
             }
           }}
