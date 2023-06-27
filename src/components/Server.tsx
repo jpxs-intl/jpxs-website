@@ -30,6 +30,8 @@ export default function Server(props: {
           ? "Race"
           : props.gameType == 5
           ? "Eliminator"
+          : props.gameType == 6
+          ? "Co-op"
           : "Undefined"}{" "}
         mode.
       </h2>

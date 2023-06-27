@@ -14,28 +14,11 @@ export default function PlayerSearch() {
               document.getElementById("playerSearchInput")?.value
             )
           );
-          const response = await (
-            await fetch("/api/player/" + text())
-          ).json();
-          /*const playerInfo: {
-            name: string;
-            gameId: number;
-            phoneNumber: number;
-            firstSeen: Date;
-            lastSeen: Date;
-            steamId: number;
-          } = response();*/
+          const response = await (await fetch("/api/player/" + text())).json();
           if (response.success) {
             setPlayerInfo(response.players[0]);
             console.log(playerInfo());
-            /*name: playerInfo.name,
-              gameId: playerInfo.gameId,
-              phoneNumber: playerInfo.phoneNumber,
-              firstSeen: new Date(playerInfo.firstSeen),
-              lastSeen: new Date(playerInfo.lastSeen),
-              steamId: playerInfo.steamId,*/
           }
-          //const component = createComponent(Player, playerInfo);
         }}
       >
         Search

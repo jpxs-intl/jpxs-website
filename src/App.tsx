@@ -22,7 +22,7 @@ const App: Component = () => {
       </Show>
       <Show when={!isOnPlayerSearch()}>
         <button
-          class="bg-bg px-8 py-2 my-8 mx-2 text-xl"
+          class="bg-bg px-8 py-2 my-8 mx-2 text-xl hover:bg-lightorange"
           onClick={() => {
             setServerListVisiblity(!isOnServerList());
             if (isOnServerList()) {
@@ -42,7 +42,7 @@ const App: Component = () => {
       </Show>
       <Show when={!isOnServerList()}>
         <button
-          class="bg-bg px-8 py-2 my-8 mx-2 text-xl"
+          class="bg-bg px-8 py-2 my-8 mx-2 text-xl hover:bg-lightorange"
           onClick={() => {
             setPlayerSearchVisibility(!isOnPlayerSearch());
             if (isOnPlayerSearch()) {
