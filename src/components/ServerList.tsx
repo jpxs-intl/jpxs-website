@@ -1,7 +1,7 @@
 import Server from "./Server";
 import { For, createResource } from "solid-js";
 const [servers] = createResource(async () => {
-  return await (await fetch("https://jpxs.international/api/servers")).json();
+  return await (await fetch("/api/servers")).json();
 });
 export default function ServerList() {
   return (

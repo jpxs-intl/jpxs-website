@@ -15,7 +15,7 @@ export default function PlayerSearch() {
             )
           );
           const response = await (
-            await fetch("https://jpxs.international/api/player/" + text())
+            await fetch("/api/player/" + text())
           ).json();
           /*const playerInfo: {
             name: string;
