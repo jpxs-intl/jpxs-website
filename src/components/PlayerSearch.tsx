@@ -11,7 +11,8 @@ export default function PlayerSearch() {
         onClick={async () => {
           setText(
             encodeURIComponent(
-              document.getElementById("playerSearchInput")?.value
+              (document.getElementById("playerSearchInput") as HTMLInputElement)
+                .value
             )
           );
           const response = await (await fetch("/api/player/" + text())).json();
