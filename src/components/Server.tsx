@@ -13,7 +13,7 @@ export default function Server(props: {
   build: string;
 }) {
   return (
-    <div class="bg-bg w-full my-2 grid grid-cols-8">
+    <div class="bg-bg w-full my-2 grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
       <h1>{props.name}</h1>
       <h2>
         {props.players}/{props.maxPlayers} players online
