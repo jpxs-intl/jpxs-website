@@ -35,7 +35,7 @@ export default function Server(props: {
           : "Undefined"}{" "}
         mode.
       </h2>
-      <h2>
+      <h2 style={`color: hsl(${props.version * 6}, 100%, 60%)`}>
         Version: {props.version}
         {props.build}
       </h2>
