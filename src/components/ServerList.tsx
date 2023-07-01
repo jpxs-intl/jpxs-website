@@ -1,7 +1,36 @@
 import Server from "./Server";
 import { For, createResource } from "solid-js";
 const [servers] = createResource(async () => {
-  return await (await fetch("/api/servers")).json();
+  const serverList = await (await fetch("/api/servers")).json();
+  serverList.sort(
+    (
+      a: {
+        id: number;
+        name: string;
+        address: string;
+        port: number;
+        version: number;
+        gameType: number;
+        players: number;
+        maxPlayers: number;
+        build: string;
+      },
+      b: {
+        id: number;
+        name: string;
+        address: string;
+        port: number;
+        version: number;
+        gameType: number;
+        players: number;
+        maxPlayers: number;
+        build: string;
+      }
+    ) => {
+      return a.players > b.players ? -1 : 1;
+    }
+  );
+  return serverList;
 });
 export default function ServerList() {
   return (
