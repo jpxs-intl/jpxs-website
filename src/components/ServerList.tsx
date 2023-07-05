@@ -1,6 +1,7 @@
 import Server from "./Server";
 import { For, createResource } from "solid-js";
 import { Topbar } from "./Topbar";
+import { A } from "@solidjs/router";
 
 const [servers] = createResource(async () => {
   const serverList = await (await fetch("/api/servers")).json();
@@ -64,9 +65,9 @@ export default function ServerList() {
         )}
       </For>
       <div class="my-8 mx-2">
-        <a href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
+        <A href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
           Go Back
-        </a>
+        </A>
       </div>
     </div>
   );

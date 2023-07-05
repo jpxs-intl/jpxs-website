@@ -1,9 +1,21 @@
+import { A, useParams } from "@solidjs/router";
 import { createSignal, Show } from "solid-js";
 import Player from "./Player";
 import { Topbar } from "./Topbar";
 let [text, setText] = createSignal("");
 let [playerInfo, setPlayerInfo] = createSignal();
 export default function PlayerSearch() {
+  const params = useParams();
+  if (params.id != undefined) {
+    console.log("not undefined, searching using parameter");
+    fetch("/api/player/" + params.id).then(function (response) {
+      response.json().then(function (json) {
+        if (json.success) {
+          setPlayerInfo(json.players[0]);
+        }
+      });
+    });
+  }
   return (
     <div>
       <Topbar></Topbar>
@@ -37,9 +49,9 @@ export default function PlayerSearch() {
         ></Player>
       </Show>
       <div class="my-8 mx-2">
-        <a href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
+        <A href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
           Go Back
-        </a>
+        </A>
       </div>
     </div>
   );
