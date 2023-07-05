@@ -8,7 +8,9 @@ export default function PlayerSearch() {
   const params = useParams();
   if (params.id != undefined) {
     console.log("not undefined, searching using parameter");
-    fetch("/api/player/" + params.id).then(function (response) {
+    fetch("/api/player/" + encodeURIComponent(params.id)).then(function (
+      response
+    ) {
       response.json().then(function (json) {
         if (json.success) {
           setPlayerInfo(json.players[0]);
