@@ -10,4 +10,4 @@ function Topbar() {
   );
 }
 
-export { Topbar, setMenuText };
+export { Topbar };

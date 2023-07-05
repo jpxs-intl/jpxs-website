@@ -1,10 +1,12 @@
 import { createSignal, Show } from "solid-js";
 import Player from "./Player";
+import { Topbar } from "./Topbar";
 let [text, setText] = createSignal("");
 let [playerInfo, setPlayerInfo] = createSignal();
 export default function PlayerSearch() {
   return (
     <div>
+      <Topbar></Topbar>
       <h1 class="text-2xl py-2 px-2">Player Information</h1>
       <input class="bg-bg mx-2" id="playerSearchInput"></input>
       <button
@@ -34,6 +36,11 @@ export default function PlayerSearch() {
           steamId={playerInfo().steamId}
         ></Player>
       </Show>
+      <div class="my-8 mx-2">
+        <a href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
+          Go Back
+        </a>
+      </div>
     </div>
   );
 }

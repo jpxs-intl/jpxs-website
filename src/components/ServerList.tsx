@@ -1,5 +1,7 @@
 import Server from "./Server";
 import { For, createResource } from "solid-js";
+import { Topbar } from "./Topbar";
+
 const [servers] = createResource(async () => {
   const serverList = await (await fetch("/api/servers")).json();
   serverList.sort(
@@ -35,6 +37,7 @@ const [servers] = createResource(async () => {
 export default function ServerList() {
   return (
     <div>
+      <Topbar></Topbar>
       <For each={servers()}>
         {(server: {
           id: number;
@@ -60,6 +63,11 @@ export default function ServerList() {
           ></Server>
         )}
       </For>
+      <div class="my-8 mx-2">
+        <a href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
+          Go Back
+        </a>
+      </div>
     </div>
   );
 }
