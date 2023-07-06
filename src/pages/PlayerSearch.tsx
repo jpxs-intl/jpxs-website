@@ -1,16 +1,16 @@
 import { A, useParams } from "@solidjs/router";
 import { createSignal, Show } from "solid-js";
-import Player from "./Player";
-import { Topbar } from "./Topbar";
+import Player from "../components/Player";
+import { Topbar } from "../components/Topbar";
 let [text, setText] = createSignal("");
 let [playerInfo, setPlayerInfo] = createSignal();
 export default function PlayerSearch() {
   const params = useParams();
   if (params.id != undefined) {
     console.log("not undefined, searching using parameter");
-    fetch("/api/player/" + encodeURIComponent(params.id)).then(function (
-      response
-    ) {
+    fetch(
+      "https://jpxs.international/api/player/" + encodeURIComponent(params.id)
+    ).then(function (response) {
       response.json().then(function (json) {
         if (json.success) {
           setPlayerInfo(json.players[0]);
@@ -20,7 +20,7 @@ export default function PlayerSearch() {
   }
   return (
     <div>
-      <Topbar></Topbar>
+      <Topbar page="Search"></Topbar>
       <h1 class="text-2xl py-2 px-2">Player Information</h1>
       <input class="bg-bg mx-2" id="playerSearchInput"></input>
       <button
@@ -31,7 +31,9 @@ export default function PlayerSearch() {
                 .value
             )
           );
-          const response = await (await fetch("/api/player/" + text())).json();
+          const response = await (
+            await fetch("https://jpxs.international/api/player/" + text())
+          ).json();
           if (response.success) {
             setPlayerInfo(response.players[0]);
             console.log(playerInfo());

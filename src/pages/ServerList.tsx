@@ -1,10 +1,12 @@
-import Server from "./Server";
+import Server from "../components/Server";
 import { For, createResource } from "solid-js";
-import { Topbar } from "./Topbar";
+import { Topbar } from "../components/Topbar";
 import { A } from "@solidjs/router";
 
 const [servers] = createResource(async () => {
-  const serverList = await (await fetch("/api/servers")).json();
+  const serverList = await (
+    await fetch("https://jpxs.international/api/servers")
+  ).json();
   serverList.sort(
     (
       a: {
@@ -38,7 +40,7 @@ const [servers] = createResource(async () => {
 export default function ServerList() {
   return (
     <div>
-      <Topbar></Topbar>
+      <Topbar page="Live"></Topbar>
       <For each={servers()}>
         {(server: {
           id: number;

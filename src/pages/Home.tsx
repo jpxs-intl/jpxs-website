@@ -1,10 +1,10 @@
-import { Topbar } from "./Topbar";
+import { Topbar } from "../components/Topbar";
 import { A } from "@solidjs/router";
 
 export default function Home() {
   return (
     <div>
-      <Topbar />
+      <Topbar page="Home" />
       <div class="text-4xl ml-4 mt-4 mb-10">
         <h1 class="text-lightorange inline">jpxs</h1>
         <h2 class="inline">.international</h2>
