@@ -4,9 +4,7 @@ import { Topbar } from "../components/Topbar";
 import { A } from "@solidjs/router";
 
 const [servers] = createResource(async () => {
-  const serverList = await (
-    await fetch("https://jpxs.international/api/servers")
-  ).json();
+  const serverList = await (await fetch("/api/servers")).json();
   serverList.sort(
     (
       a: {

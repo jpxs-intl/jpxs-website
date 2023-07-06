@@ -8,9 +8,9 @@ export default function PlayerSearch() {
   const params = useParams();
   if (params.id != undefined) {
     console.log("not undefined, searching using parameter");
-    fetch(
-      "https://jpxs.international/api/player/" + encodeURIComponent(params.id)
-    ).then(function (response) {
+    fetch("/api/player/" + encodeURIComponent(params.id)).then(function (
+      response
+    ) {
       response.json().then(function (json) {
         if (json.success) {
           setPlayerInfo(json.players[0]);
@@ -31,9 +31,7 @@ export default function PlayerSearch() {
                 .value
             )
           );
-          const response = await (
-            await fetch("https://jpxs.international/api/player/" + text())
-          ).json();
+          const response = await (await fetch("/api/player/" + text())).json();
           if (response.success) {
             setPlayerInfo(response.players[0]);
             console.log(playerInfo());
