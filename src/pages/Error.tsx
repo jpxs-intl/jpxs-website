@@ -3,7 +3,7 @@ import { Topbar } from "../components/Topbar";
 export default function Error() {
   const hash = window.location.hash.substring(1, window.location.hash.length);
   const args = hash.split(";");
-  const props: string[] = [];
+  const props: { [key: string]: string } = {};
   for (const prop of args) {
     // requires the following arguments in this format: #title=mytitle;description=mydescription;button=mybutton;href=https%3A%2F%2Fwww.example.com
     const splitProp = prop.split("=");
