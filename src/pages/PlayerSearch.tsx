@@ -2,18 +2,23 @@ import { A, useParams } from "@solidjs/router";
 import { createSignal, Show } from "solid-js";
 import Player from "../components/Player";
 import { Topbar } from "../components/Topbar";
-let [text, setText] = createSignal("");
+let [inputText, setInputText] = createSignal("");
+let [errorText, setErrorText] = createSignal("Loading...");
 let [playerInfo, setPlayerInfo] = createSignal();
 export default function PlayerSearch() {
   const params = useParams();
   if (params.id != undefined) {
-    console.log("not undefined, searching using parameter");
-    fetch("/api/player/" + encodeURIComponent(params.id)).then(function (
-      response
-    ) {
+    setInputText(decodeURIComponent(params.id));
+    fetch(
+      "https://jpxs.international/api/player/" + encodeURIComponent(params.id)
+    ).then(function (response) {
       response.json().then(function (json) {
         if (json.success) {
           setPlayerInfo(json.players[0]);
+        } else {
+          setErrorText(
+            "Error fetching this name, try another! (" + json.error + ")"
+          );
         }
       });
     });
@@ -22,24 +27,30 @@ export default function PlayerSearch() {
     <div>
       <Topbar page="Search"></Topbar>
       <h1 class="text-2xl py-2 px-2">Player Information</h1>
-      <input class="bg-bg mx-2" id="playerSearchInput"></input>
+      <input
+        class="bg-bg mx-2"
+        id="playerSearchInput"
+        value={inputText()}
+      ></input>
       <button
         onClick={async () => {
-          setText(
-            encodeURIComponent(
-              (document.getElementById("playerSearchInput") as HTMLInputElement)
-                .value
-            )
+          window.location.replace(
+            "/player/" +
+              encodeURIComponent(
+                (
+                  document.getElementById(
+                    "playerSearchInput"
+                  ) as HTMLInputElement
+                ).value
+              )
           );
-          const response = await (await fetch("/api/player/" + text())).json();
-          if (response.success) {
-            setPlayerInfo(response.players[0]);
-            console.log(playerInfo());
-          }
         }}
       >
         Search
       </button>
+      <Show when={!playerInfo() && params.id != undefined}>
+        <h2 class="mx-2">{errorText()}</h2>
+      </Show>
       <Show when={playerInfo()}>
         <Player
           name={playerInfo().name}
