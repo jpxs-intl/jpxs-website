@@ -14,9 +14,6 @@ const App: Component = () => {
         <Route path="/error" component={Error} />
       </Routes>
     </Router>
-    /*<div>
-
-    </div>*/
   );
 };
 
