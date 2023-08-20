@@ -1,6 +1,3 @@
-import type { JSXElement } from "solid-js";
-import type { Component } from "solid-js";
-
 export default function Server(props: {
   id: number;
   name: string;
@@ -16,10 +13,9 @@ export default function Server(props: {
     <div class="bg-bg w-full py-1 border-y-[1px] border-black grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
       <h1>{props.name}</h1>
       <h2>
-        {props.players}/{props.maxPlayers} players online
+        {props.players}/{props.maxPlayers}
       </h2>
       <h2>
-        on{" "}
         {props.gameType == 4
           ? "World"
           : props.gameType == 3
@@ -32,11 +28,10 @@ export default function Server(props: {
           ? "Eliminator"
           : props.gameType == 6
           ? "Co-op"
-          : "Undefined"}{" "}
-        mode.
+          : "Undefined"}
       </h2>
       <h2 style={`color: hsl(${props.version * 6}, 100%, 60%)`}>
-        Version: {props.version}
+        {props.version}
         {props.build}
       </h2>
     </div>
