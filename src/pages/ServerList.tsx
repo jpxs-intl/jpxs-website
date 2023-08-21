@@ -71,7 +71,7 @@ export default function ServerList() {
               build={server.build}
               tps={server.tps}
               mode={server.customMode}
-              map={server.map.toLowerCase()}
+              map={server.map}
             ></Server>
           )}
         </For>

@@ -19,6 +19,9 @@ function getGameTypeString(gameType: number) {
     ? "Co-op"
     : "Undefined";
 }
+function getMapFromGameType(gameType: number) {
+  return gameType == 4 ? "World" : "Round";
+}
 export default function Server(props: {
   id: number;
   name: string;
@@ -61,7 +64,7 @@ export default function Server(props: {
                 width="24"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">{props.map}</h2>
+              <h2 class="px-2">{props.map?.toLowerCase()}</h2>
             </div>
           </Show>
           <Show when={!props.mode}>
@@ -81,7 +84,9 @@ export default function Server(props: {
                 width="24"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">{getGameTypeString(props.gameType)}</h2>
+              <h2 class="px-2">
+                {getMapFromGameType(props.gameType).toLowerCase()}
+              </h2>
             </div>
           </Show>
           <Show when={props.tps}>
