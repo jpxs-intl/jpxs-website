@@ -18,7 +18,7 @@ const [servers] = createResource(async () => {
         maxPlayers: number;
         build: string;
         tps?: number;
-        mode?: string;
+        customMode?: { name: string };
       },
       b: {
         id: number;
@@ -31,7 +31,7 @@ const [servers] = createResource(async () => {
         maxPlayers: number;
         build: string;
         tps?: number;
-        mode?: string;
+        customMode?: { name: string };
       }
     ) => {
       return a.players > b.players ? -1 : 1;
@@ -56,7 +56,8 @@ export default function ServerList() {
             maxPlayers: number;
             build: string;
             tps?: number;
-            mode?: string;
+            customMode?: { name: string };
+            map?: string;
           }) => (
             <Server
               id={server.id}
@@ -69,7 +70,8 @@ export default function ServerList() {
               maxPlayers={server.maxPlayers}
               build={server.build}
               tps={server.tps}
-              mode={server.mode}
+              mode={server.customMode}
+              map={server.map}
             ></Server>
           )}
         </For>

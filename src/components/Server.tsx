@@ -4,6 +4,21 @@ import versionImg from "../assets/code-branch-solid.svg";
 import tpsImg from "../assets/microchip-solid.svg";
 import customModeImg from "../assets/gamepad-solid.svg";
 import { Show } from "solid-js";
+function getGameTypeString(gameType: number) {
+  return gameType == 4
+    ? "World"
+    : gameType == 3
+    ? "Round"
+    : gameType == 7
+    ? "Versus"
+    : gameType == 2
+    ? "Race"
+    : gameType == 5
+    ? "Eliminator"
+    : gameType == 6
+    ? "Co-op"
+    : "Undefined";
+}
 export default function Server(props: {
   id: number;
   name: string;
@@ -15,7 +30,8 @@ export default function Server(props: {
   maxPlayers: number;
   build: string;
   tps?: number;
-  mode?: string;
+  mode?: { name: string };
+  map?: string;
 }) {
   return (
     <div class="bg-bg py-1 border-y-[1px] border-black rounded-2xl">
@@ -36,10 +52,8 @@ export default function Server(props: {
                 width="24"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">{props.mode}</h2>
+              <h2 class="px-2">{props.mode?.name}</h2>
             </div>
-          </Show>
-          <Show when={!props.mode}>
             <div class="flex flex-row">
               <img
                 src={gamemodeImg}
@@ -47,27 +61,33 @@ export default function Server(props: {
                 width="24"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">
-                {props.gameType == 4
-                  ? "World"
-                  : props.gameType == 3
-                  ? "Round"
-                  : props.gameType == 7
-                  ? "Versus"
-                  : props.gameType == 2
-                  ? "Race"
-                  : props.gameType == 5
-                  ? "Eliminator"
-                  : props.gameType == 6
-                  ? "Co-op"
-                  : "Undefined"}
-              </h2>
+              <h2 class="px-2">{props.map}</h2>
+            </div>
+          </Show>
+          <Show when={!props.mode}>
+            <div class="flex flex-row">
+              <img
+                src={customModeImg}
+                height="24"
+                width="24"
+                alt="Game Mode:"
+              ></img>
+              <h2 class="px-2">{getGameTypeString(props.gameType)}</h2>
+            </div>
+            <div class="flex flex-row">
+              <img
+                src={gamemodeImg}
+                height="24"
+                width="24"
+                alt="Game Mode:"
+              ></img>
+              <h2 class="px-2">{getGameTypeString(props.gameType)}</h2>
             </div>
           </Show>
           <Show when={props.tps}>
             <div class="flex flex-row">
               <img src={tpsImg} height="24" width="24" alt=""></img>
-              <h2 class="px-2">{props.tps?.toString().substring(0, 6)} TPS</h2>
+              <h2 class="px-2">{props.tps?.toFixed(2)} TPS</h2>
             </div>
           </Show>
           <div class="flex flex-row">
