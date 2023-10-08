@@ -7,7 +7,7 @@ export default function Home() {
       <Topbar page="Home" />
       <div class="text-4xl ml-4 mt-4 mb-10">
         <h1 class="text-lightorange inline">jpxs</h1>
-        <h2 class="inline">.international</h2>
+        <h2 class="inline">.io</h2>
       </div>
       <A
         href="/live"
