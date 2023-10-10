@@ -20,7 +20,7 @@ function getGameTypeString(gameType: number) {
     : "Undefined";
 }
 function getMapFromGameType(gameType: number) {
-  return gameType == 4 ? "World" : "Round";
+  return gameType == 4 ? "test2" : "Round";
 }
 export default function Server(props: {
   id: number;
