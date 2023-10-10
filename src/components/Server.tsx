@@ -37,7 +37,7 @@ export default function Server(props: {
   map?: string;
 }) {
   return (
-    <div class="bg-bg py-1 border-y-[1px] border-black rounded-2xl">
+    <div class="bg-crust py-1 border-y-[1px] border-crust rounded-2xl">
       <div class="px-2">
         <h1 class="text-2xl font-bold glow-small">{props.name}</h1>
         <div class="flex flex-row gap-4">

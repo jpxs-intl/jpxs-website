@@ -1,4 +1,4 @@
-import { Topbar } from "../components/Topbar";
+import Button from "../components/Button";
 
 export default function Error() {
   const hash = window.location.hash.substring(1, window.location.hash.length);
@@ -23,17 +23,13 @@ export default function Error() {
   }
   return (
     <div>
-      <Topbar page="Error" />
       <div class="text-center">
         <h1 class="text-6xl glow my-2">{decodeURIComponent(props.title)}</h1>
         <h2 class="text-2xl">{decodeURIComponent(props.description)}</h2>
         <div class="my-8 mx-2">
-          <a
-            class="bg-bg px-8 py-2  text-xl hover:bg-lightorange"
-            href={decodeURIComponent(props.href)}
-          >
+          <Button href={decodeURIComponent(props.href)}>
             {decodeURIComponent(props.button)}
-          </a>
+          </Button>
         </div>
       </div>
     </div>
