@@ -13,3 +13,12 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 render(() => <App />, root!);
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash && window.location.hash.startsWith("#linksuccess")) {
+      const [ _, phone, ign, username, id ] = window.location.hash.split(":");
+      window.location.hash = "";
+
+      alert(`Linking successful! ${ign}(${phone}) is now linked to ${username}(${id})`)
+  }
+})
