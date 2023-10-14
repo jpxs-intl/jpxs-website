@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const [ _, phone, ign, username, id ] = window.location.hash.split(":");
       window.location.hash = "";
 
-      alert(`Linking successful! ${ign}(${phone}) is now linked to ${username}(${id})`)
+      alert(`Linking successful! ${ign} (${phone}) is now linked to ${username} (${id})`)
   }
 })
