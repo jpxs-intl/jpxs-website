@@ -15,5 +15,5 @@ module.exports = {
       lightorange: "#FF7709",
     },
   },
-  plugins: [],
+  plugins: [require("@catppuccin/tailwindcss")],
 };

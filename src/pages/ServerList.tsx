@@ -1,64 +1,34 @@
 import Server from "../components/Server";
 import { For, createResource } from "solid-js";
-import { Topbar } from "../components/Topbar";
 import { A } from "@solidjs/router";
-
+import Button from "../components/Button";
+type server = {
+  id: number;
+  name: string;
+  address: string;
+  port: number;
+  version: number;
+  gameType: number;
+  players: number;
+  maxPlayers: number;
+  build: string;
+  tps?: number;
+  customMode?: { name: string };
+  map: string;
+};
 const [servers] = createResource(async () => {
   const serverList = await (await fetch("/api/servers")).json();
-  serverList.sort(
-    (
-      a: {
-        id: number;
-        name: string;
-        address: string;
-        port: number;
-        version: number;
-        gameType: number;
-        players: number;
-        maxPlayers: number;
-        build: string;
-        tps?: number;
-        customMode?: { name: string };
-      },
-      b: {
-        id: number;
-        name: string;
-        address: string;
-        port: number;
-        version: number;
-        gameType: number;
-        players: number;
-        maxPlayers: number;
-        build: string;
-        tps?: number;
-        customMode?: { name: string };
-      }
-    ) => {
-      return a.players > b.players ? -1 : 1;
-    }
-  );
+  serverList.sort((a: server, b: server) => {
+    return a.players > b.players ? -1 : 1;
+  });
   return serverList;
 });
 export default function ServerList() {
   return (
     <div>
-      <Topbar page="Live"></Topbar>
       <div class="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3 mx-8 my-8 gap-2">
         <For each={servers()}>
-          {(server: {
-            id: number;
-            name: string;
-            address: string;
-            port: number;
-            version: number;
-            gameType: number;
-            players: number;
-            maxPlayers: number;
-            build: string;
-            tps?: number;
-            customMode?: { name: string };
-            map?: string;
-          }) => (
+          {(server: server) => (
             <Server
               id={server.id}
               name={server.name}
@@ -76,10 +46,8 @@ export default function ServerList() {
           )}
         </For>
       </div>
-      <div class="my-8 mx-2">
-        <A href="/" class="bg-bg px-8 py-2  text-xl hover:bg-lightorange">
-          Go Back
-        </A>
+      <div class="my-8 mx-2 flex justify-center">
+        <Button href="/">Go Back</Button>
       </div>
     </div>
   );

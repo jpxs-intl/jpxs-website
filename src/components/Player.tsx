@@ -27,16 +27,18 @@ export default function Player(props: {
   phoneNumber: number;
   firstSeen: Date;
   lastSeen: Date;
-  steamId: number;
+  steamId: string;
 }) {
   return (
-    <div class="bg-bg px-4 mx-2 my-2 w-72">
-      <h1 class="text-2xl font-bold">{props.name}</h1>
-      <h2>Phone Number: {props.phoneNumber}</h2>
-      <h2>Game Id: {props.gameId}</h2>
-      <h2>Steam ID: {props.steamId}</h2>
-      <h2>First seen at {dateToString(props.firstSeen)}</h2>
-      <h2>Last seen {dateToString(props.lastSeen, true)}</h2>
+    <div class="flex justify-center">
+      <div class="bg-crust px-4 mx-2 my-2 w-72">
+        <h1 class="text-2xl font-bold">{props.name}</h1>
+        <h2>Phone Number: {props.phoneNumber}</h2>
+        <h2>Game Id: {props.gameId}</h2>
+        <h2>Steam ID: {props.steamId}</h2>
+        <h2>First seen at {dateToString(props.firstSeen)}</h2>
+        <h2>Last seen {dateToString(props.lastSeen, true)}</h2>
+      </div>
     </div>
   );
 }

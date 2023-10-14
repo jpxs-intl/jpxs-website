@@ -16,5 +16,4 @@ const App: Component = () => {
     </Router>
   );
 };
-
 export default App;

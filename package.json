@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.6",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
