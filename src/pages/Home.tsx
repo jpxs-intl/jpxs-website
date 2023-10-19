@@ -2,7 +2,7 @@ import { A } from "@solidjs/router";
 import Button from "../components/Button";
 export default function Home() {
   return (
-    <div class="h-[100vh]">
+    <div>
       <div class="text-4xl ml-4 mt-4 flex justify-center">
         <div>
           <h1 class="text-lightorange inline">jpxs</h1>
