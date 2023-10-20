@@ -2,6 +2,7 @@ import Server from "../components/Server";
 import { For, createResource } from "solid-js";
 import { A } from "@solidjs/router";
 import Button from "../components/Button";
+import { ApiURL } from "../App";
 type server = {
   id: number;
   name: string;
@@ -17,7 +18,7 @@ type server = {
   map: string;
 };
 const [servers] = createResource(async () => {
-  const serverList = await (await fetch("/api/servers")).json();
+  const serverList = await (await fetch(`${ApiURL}/servers`)).json();
   serverList.sort((a: server, b: server) => {
     return a.players > b.players ? -1 : 1;
   });

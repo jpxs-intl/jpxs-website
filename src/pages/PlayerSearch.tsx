@@ -2,6 +2,7 @@ import { A, useNavigate, useParams } from "@solidjs/router";
 import { createSignal, Show } from "solid-js";
 import Player from "../components/Player";
 import Button from "../components/Button";
+import { ApiURL } from "../App";
 type player = {
   name: string;
   gameId: number;
@@ -43,7 +44,7 @@ export default function PlayerSearch() {
   const params = useParams();
   if (params.id != undefined) {
     setInputText(decodeURIComponent(params.id));
-    fetch("/api/player/" + encodeURIComponent(params.id)).then(function (
+    fetch(`${ApiURL}/player/${encodeURIComponent(params.id)}`).then(function (
       response
     ) {
       response.json().then(function (json: response) {
@@ -66,7 +67,7 @@ export default function PlayerSearch() {
         <h1 class="text-2xl py-2 px-2">Player Information</h1>
       </div>
       <div class="flex justify-center">
-        <div class="flex items-center">
+        <div class="flex items-center flex-col gap-6 sm:gap-0 sm:flex-row">
           <Show when={playerSet()}>
             <Player
               name={playerInfo().name}
@@ -94,25 +95,25 @@ export default function PlayerSearch() {
                 navigate("/player/" + valEncoded);
                 setInputText(decodeURIComponent(val));
 
-                fetch("https://jpxs.io/api/player/" + valEncoded).then(
-                  function (response) {
-                    response.json().then(function (json: response) {
-                      console.log("gotten");
-                      if (json.success) {
-                        console.log(json);
-                        setPlayerInfo(json.players[0]);
-                        setPlayerSet(true);
-                      } else {
-                        setErrorText(
-                          "Error fetching this name, try another! (" +
-                            json.error +
-                            ")"
-                        );
-                        setPlayerSet(false);
-                      }
-                    });
-                  }
-                );
+                fetch(`${ApiURL}/player/${valEncoded}`).then(function (
+                  response
+                ) {
+                  response.json().then(function (json: response) {
+                    console.log("gotten");
+                    if (json.success) {
+                      console.log(json);
+                      setPlayerInfo(json.players[0]);
+                      setPlayerSet(true);
+                    } else {
+                      setErrorText(
+                        "Error fetching this name, try another! (" +
+                          json.error +
+                          ")"
+                      );
+                      setPlayerSet(false);
+                    }
+                  });
+                });
               }}
             >
               Search

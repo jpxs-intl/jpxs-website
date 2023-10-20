@@ -17,3 +17,4 @@ const App: Component = () => {
   );
 };
 export default App;
+export const ApiURL = "https://jpxs.io/api";
