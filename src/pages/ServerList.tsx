@@ -27,7 +27,7 @@ const [servers] = createResource(async () => {
 export default function ServerList() {
   return (
     <div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3 mx-8 my-8 gap-2">
+      <div class="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3 mx-2 sm:mx-8 my-8 gap-2">
         <For each={servers()}>
           {(server: server) => (
             <Server

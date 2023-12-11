@@ -42,8 +42,12 @@ export default function Server(props: {
         <h1 class="text-2xl font-bold glow-small">{props.name}</h1>
         <div class="flex flex-row gap-4">
           <div class="flex flex-row">
-            <img src={playerImg} height="24" width="24" alt="Players:"></img>
-            <h2 class="px-2">
+            <img
+              src={playerImg}
+              class="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]"
+              alt="Players:"
+            ></img>
+            <h2 class="text-sm sm:px-2 sm:text-lg">
               {props.players}/{props.maxPlayers}
             </h2>
           </div>
@@ -51,54 +55,60 @@ export default function Server(props: {
             <div class="flex flex-row">
               <img
                 src={customModeImg}
-                height="24"
-                width="24"
+                class="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">{props.mode?.name}</h2>
+              <h2 class="text-sm sm:px-2 sm:text-lg">{props.mode?.name}</h2>
             </div>
             <div class="flex flex-row">
               <img
                 src={gamemodeImg}
-                height="24"
-                width="24"
+                class="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">{props.map?.toLowerCase()}</h2>
+              <h2 class="text-sm sm:px-2 sm:text-lg">
+                {props.map?.toLowerCase()}
+              </h2>
             </div>
           </Show>
           <Show when={!props.mode}>
             <div class="flex flex-row">
               <img
                 src={customModeImg}
-                height="24"
-                width="24"
+                class="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">{getGameTypeString(props.gameType)}</h2>
+              <h2 class="text-sm sm:px-2 sm:text-lg">
+                {getGameTypeString(props.gameType)}
+              </h2>
             </div>
             <div class="flex flex-row">
               <img
                 src={gamemodeImg}
-                height="24"
-                width="24"
+                class="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]"
                 alt="Game Mode:"
               ></img>
-              <h2 class="px-2">
+              <h2 class="text-sm sm:px-2 sm:text-lg">
                 {getMapFromGameType(props.gameType).toLowerCase()}
               </h2>
             </div>
           </Show>
           <Show when={props.tps}>
             <div class="flex flex-row">
-              <img src={tpsImg} height="24" width="24" alt=""></img>
-              <h2 class="px-2">{props.tps?.toFixed(2)} TPS</h2>
+              <img
+                src={tpsImg}
+                class="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]"
+                alt=""
+              ></img>
+              <h2 class="text-sm sm:px-2 sm:text-lg">
+                {props.tps?.toFixed(2)} TPS
+              </h2>
             </div>
           </Show>
           <div class="flex flex-row">
             <img src={versionImg} height="16" width="16" alt="Version:"></img>
             <h2
-              class="px-2"
+              class="text-sm sm:px-2 sm:text-lg"
               style={`color: hsl(${props.version * 6}, 100%, 60%)`}
             >
               {props.version}
