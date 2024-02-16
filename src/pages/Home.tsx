@@ -2,6 +2,15 @@ import { A } from "@solidjs/router";
 import Button from "../components/Button";
 import discord from "../assets/discord-mark-blue.svg";
 import forum from "../assets/forum-icon.svg";
+import github from "../assets/github-mark-white.svg";
+
+function Icon(props: { src: string; href: string }) {
+  return (
+    <a href={props.href} target="__blank">
+      <img src={props.src} height="32" width="32" />
+    </a>
+  );
+}
 export default function Home() {
   return (
     <div>
@@ -16,12 +25,9 @@ export default function Home() {
         <Button href="/player">Player Search</Button>
       </div>
       <div class="flex justify-center py-2 gap-8">
-        <a href="https://discord.jpxs.io">
-          <img src={discord} height="32" width="32" />
-        </a>
-        <a href="https://forums.jpxs.io">
-          <img src={forum} height="32" width="32" />
-        </a>
+        <Icon href="https://discord.jpxs.io" src={discord} />
+        <Icon href="https://forums.jpxs.io" src={forum} />
+        <Icon href="https://github.com/jpxs-intl" src={github} />
       </div>
     </div>
   );
