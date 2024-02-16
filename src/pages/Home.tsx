@@ -7,7 +7,10 @@ import github from "../assets/github-mark-white.svg";
 function Icon(props: { src: string; href: string }) {
   return (
     <a href={props.href} target="__blank">
-      <img src={props.src} height="32" width="32" />
+      <img
+        src={props.src}
+        class="w-8 h-8 hover:w-12 hover:h-12 transition-all duration-200"
+      />
     </a>
   );
 }

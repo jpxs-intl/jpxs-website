@@ -8,7 +8,7 @@ export default function (props: {
   return (
     <A
       href={props.href}
-      class={`bg-crust rounded-xl px-8 py-2 my-8 text-xl hover:bg-lightorange ${props.class}`}
+      class={`bg-crust rounded-xl px-8 py-2 my-8 text-xl hover:bg-lightorange transition-colors duration-300 ${props.class} `}
     >
       {props.children}
     </A>

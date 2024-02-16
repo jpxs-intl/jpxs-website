@@ -25,7 +25,7 @@ function getMapFromGameType(gameType: number) {
 }
 export default function Server(props: { server: server }) {
   return (
-    <div class="bg-crust py-1 border-y-[1px] border-crust rounded-2xl">
+    <div class="bg-crust hover:bg-mantle transition-colors duration-200 py-1 border-y-[1px] border-crust rounded-2xl">
       <a href={props.server.link}>
         <div class="px-2 columns-2xs:px-4 py-2 flex flex-row gap-4">
           <div class="flex justify-left">
