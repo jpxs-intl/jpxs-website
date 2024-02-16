@@ -12,6 +12,7 @@ export default function Home() {
       <div class="flex justify-center gap-8 py-32">
         <Button href="/live">Server List</Button>
         <Button href="/player">Player Search</Button>
+        <Button href="https://discord.jpxs.io">Discord</Button>
       </div>
     </div>
   );
