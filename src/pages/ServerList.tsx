@@ -20,6 +20,7 @@ type server = {
   link?: string;
   description?: string;
   masterServer: string;
+  latency: number;
 };
 const [servers] = createResource(async () => {
   const serverList = await (await fetch(`${ApiURL}/servers`)).json();
