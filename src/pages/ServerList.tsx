@@ -21,6 +21,8 @@ type server = {
 	description?: string;
 	masterServer: string;
 	latency: number;
+	emoji: string;
+	country: string;
 };
 const [servers] = createResource(async () => {
 	const serverList = await (await fetch(`${ApiURL}/servers`)).json();
@@ -29,6 +31,8 @@ const [servers] = createResource(async () => {
 			return a.players > b.players ? -1 : 1;
 		})
 		.map((server: server) => {
+			server.name = `${server.emoji} ${server.name}`;
+
 			if (server.masterServer == "RosaClassic" && server.version < 36) {
 				server.icon = server.icon || "https://assets.jpxs.io/img/default/rosaclassic.webp";
 				server.link = "https://discord.gg/mtpCMTAPp3";
