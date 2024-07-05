@@ -33,10 +33,7 @@ const [servers] = createResource(async () => {
 		.map((server: server) => {
 			server.name = `${server.emoji} ${server.name}`;
 
-			if (server.masterServer == "RosaClassic" && server.version < 36) {
-				server.icon = server.icon || "https://assets.jpxs.io/img/default/rosaclassic.webp";
-				server.link = "https://discord.gg/mtpCMTAPp3";
-			} else if (server.masterServer == "RosaClassic") {
+			if (server.masterServer == "jpxs") {
 				server.build = `${server.build} (freeweekend)`;
 				server.icon = server.icon || "https://assets.jpxs.io/img/default/freeweekend.png";
 			} else {
